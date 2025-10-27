@@ -31,21 +31,21 @@ class _SplashScreenState extends State<SplashScreen> {
     return Scaffold(
       body: Center(
         child: SingleChildScrollView(
-          // This prevents overflow on smaller screens
+          
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               SizedBox(height: height * 0.25),
               Image.asset(
                 'assets/images/logo.png',
-                width: width * 0.6, // responsive logo size
+                width: width * 0.6,
               ),
               SizedBox(height: height * 0.12),
               Text(
                 'Masrofy',
                 style: TextStyle(
                   fontFamily: kPrimaryFont,
-                  fontSize: width * 0.09, // scales with screen width
+                  fontSize: width * 0.09, 
                   fontWeight: FontWeight.w500,
                 ),
               ),

@@ -44,7 +44,7 @@ class WelcomeView extends StatelessWidget {
                   'Welcome to',
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    fontSize: width * 0.09, // responsive font size
+                    fontSize: width * 0.09,
                     fontWeight: FontWeight.w700,
                     color: Colors.black87,
                   ),
