@@ -1,9 +1,21 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:masrofy/core/constants.dart';
 import 'package:masrofy/core/routes.dart';
+import 'package:masrofy/firebase_options.dart';
+import 'package:masrofy/screens/Auth/view_model/auth_cubit/auth_cubit.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+);
+  runApp(MultiBlocProvider(
+    providers: [
+       BlocProvider(create: (context) => AuthCubit()),
+    ],child: const MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {

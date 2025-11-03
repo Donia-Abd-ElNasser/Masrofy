@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 import 'package:masrofy/core/routes.dart';
-import 'package:masrofy/screens/Auth/login/view/login_view.dart';
+
 
 
 class WelcomeView extends StatelessWidget {
@@ -14,7 +15,7 @@ class WelcomeView extends StatelessWidget {
     final width = size.width;
 
     return Scaffold(
-      backgroundColor: Colors.grey[100],
+      //backgroundColor: Colors.grey[100],
       body: SafeArea(
         child: SingleChildScrollView(
           // To avoid overflow on small devices
@@ -23,7 +24,7 @@ class WelcomeView extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SizedBox(height: height * 0.05),
+                SizedBox(height: height * 0.15),
 
                 // Logo
                 Container(
@@ -60,69 +61,13 @@ class WelcomeView extends StatelessWidget {
                   ),
                 ),
 
-                SizedBox(height: height * 0.07),
+               SizedBox(height: height * 0.07),
 
-                // Log in button
-                SizedBox(
-                  width: double.infinity,
-                  height: height * 0.07,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => const LoginView()),
-                      );
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.black,
-                      foregroundColor: Colors.white,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(28),
-                      ),
-                      elevation: 0,
-                    ),
-                    child: Text(
-                      'Log in',
-                      style: TextStyle(
-                        fontSize: width * 0.045,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                  ),
-                ),
-
-                SizedBox(height: height * 0.02),
-
-                // Sign up button
-                SizedBox(
-                  width: double.infinity,
-                  height: height * 0.07,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      GoRouter.of(context).push(AppRoutes.kRegisterView);
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.grey[300],
-                      foregroundColor: Colors.grey[700],
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(28),
-                      ),
-                      elevation: 0,
-                    ),
-                    child: Text(
-                      'Sign up',
-                      style: TextStyle(
-                        fontSize: width * 0.045,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                  ),
-                ),
-
-                SizedBox(height: height * 0.015),
+              
+          
 
                 Text(
-                  'Continue With Accounts',
+                  'Continue With ',
                   style: TextStyle(
                     fontSize: width * 0.035,
                     color: Colors.grey[500],
@@ -140,7 +85,7 @@ class WelcomeView extends StatelessWidget {
                         height: height * 0.065,
                         child: ElevatedButton(
                           onPressed: () {
-                            // Google login
+                         
                           },
                           style: ElevatedButton.styleFrom(
                             backgroundColor: const Color(0xFFFFCDD2),
@@ -150,13 +95,21 @@ class WelcomeView extends StatelessWidget {
                             ),
                             elevation: 0,
                           ),
-                          child: Text(
-                            'GOOGLE',
-                            style: TextStyle(
-                              fontSize: width * 0.035,
-                              fontWeight: FontWeight.w600,
-                              letterSpacing: 1,
-                            ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(FontAwesomeIcons.google,color: const Color(0xFFD32F2F),size: 15,),
+                              
+                               SizedBox(width: 10,),
+                              Text(
+                                'GOOGLE',
+                                style: TextStyle(
+                                  fontSize: width * 0.035,
+                                  fontWeight: FontWeight.w600,
+                                  letterSpacing: 1,
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                       ),
@@ -169,7 +122,7 @@ class WelcomeView extends StatelessWidget {
                         height: height * 0.065,
                         child: ElevatedButton(
                           onPressed: () {
-                            // Facebook login
+                        GoRouter.of(context).push(AppRoutes.kPhoneView);
                           },
                           style: ElevatedButton.styleFrom(
                             backgroundColor: const Color(0xFFBBDEFB),
@@ -179,13 +132,20 @@ class WelcomeView extends StatelessWidget {
                             ),
                             elevation: 0,
                           ),
-                          child: Text(
-                            'FACEBOOK',
-                            style: TextStyle(
-                              fontSize: width * 0.035,
-                              fontWeight: FontWeight.w600,
-                              letterSpacing: 1,
-                            ),
+                          child: Row(
+                             mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                                Icon(FontAwesomeIcons.phone,color: const Color(0xFF1976D2),size: 15,),
+                                SizedBox(width: 10,),
+                              Text(
+                                'PHONE',
+                                style: TextStyle(
+                                  fontSize: width * 0.035,
+                                  fontWeight: FontWeight.w600,
+                                  letterSpacing: 1,
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                       ),

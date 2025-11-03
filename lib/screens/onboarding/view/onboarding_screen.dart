@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:masrofy/core/routes.dart';
 import 'package:masrofy/screens/onboarding/model/onboarding_model.dart';
-import 'package:masrofy/screens/onboarding/view/welcome_screen.dart';
+
 
 class OnboardingView extends StatefulWidget {
   const OnboardingView({super.key});
@@ -74,7 +74,7 @@ class _OnboardingViewState extends State<OnboardingView> {
     final width = size.width;
 
     return Scaffold(
-      backgroundColor: Colors.white,
+    
       body: SafeArea(
         child: Column(
           children: [
@@ -183,7 +183,7 @@ class _OnboardingViewState extends State<OnboardingView> {
                             ),
                           ),
 
-                          SizedBox(height: height * 0.02),
+                        SizedBox(height:8),
 
                           // Subtitle
                           Text(
