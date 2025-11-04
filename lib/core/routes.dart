@@ -34,8 +34,6 @@ static const kBudgetView='/budget';
       initialLocation: kSplashView,
       routes: [
 
-
-
     animatedRoute(
           path: kSplashView,
           child: const SplashScreen(),
