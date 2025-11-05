@@ -7,7 +7,52 @@ class AuthCubit extends Cubit<AuthState> {
   AuthCubit() : super(AuthInitial());
   final GoogleSignIn _googleSignIn = GoogleSignIn.instance;
   final FirebaseAuth _auth = FirebaseAuth.instance;
+  String? verificationId;
 
+  Future<void> sendPhoneCode(String phoneNumber) async {
+    emit(AuthLoading());
+    try {
+      await _auth.verifyPhoneNumber(
+        phoneNumber: phoneNumber,
+        verificationCompleted: (PhoneAuthCredential credential) async {
+          await _auth.signInWithCredential(credential);
+          emit(AuthSuccess());
+        },
+        verificationFailed: (FirebaseAuthException e) {
+          emit(
+            AuthFailure(errmessage: e.message ?? "Phone verification failed"),
+          );
+        },
+        codeSent: (String verId, int? resendToken) {
+          verificationId = verId;
+          emit(AuthCodeSent());
+        },
+        codeAutoRetrievalTimeout: (String verId) {
+          verificationId = verId;
+        },
+      );
+    } catch (e) {
+      emit(AuthFailure(errmessage: e.toString()));
+    }
+  }
+
+  Future<void> verifyOtp(String otpCode) async {
+    emit(AuthLoading());
+    try {
+      final credential = PhoneAuthProvider.credential(
+        verificationId: verificationId!,
+        smsCode: otpCode,
+      );
+      await _auth.signInWithCredential(credential);
+      emit(AuthSuccess());
+    } 
+    
+    catch (e) {
+      emit(AuthFailure(errmessage: e.toString()));
+    }
+  }
+
+  // 🔹 Google Sign-In
   Future<void> signInWithGoogle() async {
     emit(AuthLoading());
     try {
@@ -36,20 +81,5 @@ class AuthCubit extends Cubit<AuthState> {
     }
   }
 
-  String _getFirebaseErrorMessage(String errorCode) {
-    switch (errorCode) {
-      case 'invalid-email':
-        return 'The email address is not valid.';
-      case 'user-not-found':
-        return 'No user found with this email.';
-      case 'wrong-password':
-        return 'Incorrect password. Please try again.';
-      case 'network-request-failed':
-        return 'No internet connection.';
-      default:
-        return 'Login failed. Please try again.';
-    }
-  }
-
-  
+ 
 }

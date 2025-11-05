@@ -31,7 +31,7 @@ static const kHomeView='/home';
 static const kBudgetView='/budget';
   static GoRouter getRouter() {
     return GoRouter(
-      initialLocation: kSplashView,
+      initialLocation: kWelcomeView,
       routes: [
 
     animatedRoute(

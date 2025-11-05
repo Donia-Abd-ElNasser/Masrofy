@@ -19,11 +19,15 @@ class WelcomeView extends StatelessWidget {
       body: BlocConsumer<AuthCubit, AuthState>(
         listener: (context, state) {
           if (state is AuthSuccess) {
-            ScaffoldMessenger.of(
-              context,
-            ).showSnackBar(const SnackBar(content: Text('Login Successful ')));
+            // ScaffoldMessenger.of(
+            //   context,
+            // ).showSnackBar(const SnackBar(
+            //   backgroundColor: Colors.green,
+             
+            //   content: Text('You are Successfully Logged in')
+            //   ));
             GoRouter.of(context).push(AppRoutes.kHomeView);
-            GoRouter.of(context).go(AppRoutes.kHomeView);
+           
           } else if (state is AuthFailure) {
             ScaffoldMessenger.of(
               context,
@@ -31,10 +35,11 @@ class WelcomeView extends StatelessWidget {
           }
         },
         builder: (context, state) {
-          final cubit = context.read<AuthCubit>();
+         
 
           return SafeArea(
             child: SingleChildScrollView(
+              keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
               padding: EdgeInsets.symmetric(horizontal: width * 0.06),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
