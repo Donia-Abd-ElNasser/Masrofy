@@ -12,7 +12,20 @@
           "package_name": "com.example.masrofy"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "7424665061-4pvu70bfg4dbjb4fk9s2a3il15eferao.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.masrofy",
+            "certificate_hash": "50c3dc7bd9836217455df51d73494da7f5402941"
+          }
+        },
+        {
+          "client_id": "7424665061-oto6j5g760t47sv2fdihdlvpjtb85agm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyBHHJC4SemkWmm2pbTfG2cWi4V3AtyoC3c"
@@ -20,7 +33,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "7424665061-oto6j5g760t47sv2fdihdlvpjtb85agm.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "7424665061-1k3guqmk2d1od124h4p3d65hu1ref69q.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.masrofy"
+              }
+            }
+          ]
         }
       }
     }

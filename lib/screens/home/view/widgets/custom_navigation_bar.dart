@@ -38,10 +38,10 @@ class CustomBottomNav extends StatelessWidget {
               if (location.startsWith(AppRoutes.kTransactionView)) {
                 selectedIndex = 2;
               }
-              if (location.startsWith(AppRoutes.kNotificationView)) {
+              if (location.startsWith(AppRoutes.kBudgetView)) {
                 selectedIndex = 3;
               }
-              if (location.startsWith(AppRoutes.kBudgetView)) selectedIndex = 4;
+              if (location.startsWith(AppRoutes.kProfileView)) selectedIndex = 4;
 
               return BottomNavigationBar(
                 currentIndex: selectedIndex,
@@ -57,10 +57,10 @@ class CustomBottomNav extends StatelessWidget {
                       (context).go(AppRoutes.kTransactionView);
                       break;
                     case 3:
-                      (context).go(AppRoutes.kNotificationView);
+                      (context).go(AppRoutes.kBudgetView);
                       break;
                     case 4:
-                      (context).go(AppRoutes.kBudgetView);
+                      (context).go(AppRoutes.kProfileView);
                       break;
                   }
                 },
@@ -73,8 +73,8 @@ class CustomBottomNav extends StatelessWidget {
                   NavigationItem(FontAwesomeIcons.house, selectedIndex == 0),
                   NavigationItem(FontAwesomeIcons.chartColumn, selectedIndex == 1),
                   CenterItem(selectedIndex == 2),
-                  NavigationItem(FontAwesomeIcons.solidBell, selectedIndex == 3),
-                  NavigationItem(Icons.list_rounded, selectedIndex == 4),
+                  NavigationItem(Icons.list_rounded, selectedIndex == 3),
+                  NavigationItem(Icons.person, selectedIndex == 4),
                 ],
               );
             },

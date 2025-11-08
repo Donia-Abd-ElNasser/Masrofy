@@ -6,16 +6,16 @@ import 'auth_state.dart';
 class AuthCubit extends Cubit<AuthState> {
   AuthCubit() : super(AuthInitial());
   final GoogleSignIn _googleSignIn = GoogleSignIn.instance;
-  final FirebaseAuth _auth = FirebaseAuth.instance;
+  final FirebaseAuth auth = FirebaseAuth.instance;
   String? verificationId;
 
   Future<void> sendPhoneCode(String phoneNumber) async {
     emit(AuthLoading());
     try {
-      await _auth.verifyPhoneNumber(
+      await auth.verifyPhoneNumber(
         phoneNumber: phoneNumber,
         verificationCompleted: (PhoneAuthCredential credential) async {
-          await _auth.signInWithCredential(credential);
+          await auth.signInWithCredential(credential);
           emit(AuthSuccess());
         },
         verificationFailed: (FirebaseAuthException e) {
@@ -43,26 +43,23 @@ class AuthCubit extends Cubit<AuthState> {
         verificationId: verificationId!,
         smsCode: otpCode,
       );
-      await _auth.signInWithCredential(credential);
+      await auth.signInWithCredential(credential);
       emit(AuthSuccess());
-    } 
-    
-    catch (e) {
+    } catch (e) {
       emit(AuthFailure(errmessage: e.toString()));
     }
   }
 
-  // 🔹 Google Sign-In
-  Future<void> signInWithGoogle() async {
+  Future<User?> signInWithGoogle() async {
     emit(AuthLoading());
     try {
-      final GoogleSignInAccount? googleUser =
-          await _googleSignIn.authenticate();
+      final GoogleSignIn googleSignIn = GoogleSignIn.instance;
 
-      if (googleUser == null) {
-        emit(AuthFailure(errmessage: 'Sign in cancelled by user'));
-        return;
-      }
+      await googleSignIn.initialize();
+
+      final GoogleSignInAccount? googleUser = await googleSignIn.authenticate();
+
+      if (googleUser == null) return null;
 
       final GoogleSignInAuthentication googleAuth =
           await googleUser.authentication;
@@ -71,15 +68,19 @@ class AuthCubit extends Cubit<AuthState> {
         idToken: googleAuth.idToken,
       );
 
-      await _auth.signInWithCredential(credential);
-
-      emit(AuthSuccess());
+      final UserCredential userCredential = await auth.signInWithCredential(
+        credential,
+      );
+     emit(AuthSuccess());
+     //return userCredential.user;
     } on FirebaseAuthException catch (e) {
-      emit(AuthFailure(errmessage: e.message ?? 'Firebase Auth Error'));
-    } on Exception catch (e) {
-      emit(AuthFailure(errmessage: e.toString()));
-    }
+    emit(AuthFailure(errmessage: e.message ?? 'Firebase Auth Error'));
+  } catch (e) {
+    emit(AuthFailure(errmessage: e.toString()));
   }
-
- 
+  }
+  Future<void> signOut() async {
+    await GoogleSignIn.instance.signOut();
+    await auth.signOut();
+  }
 }

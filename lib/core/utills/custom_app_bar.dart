@@ -20,12 +20,13 @@ final String text;
             children: [
               SizedBox(height: 15,),
               Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                spacing: 20,
+                // crossAxisAlignment: CrossAxisAlignment.center,
+                // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              //  spacing: 20,
                 children: [
                   
                   Backbutton(width: width),
-                  const SizedBox(width: 12),
+                   SizedBox(width: width*0.19),
                    Text(
                     text,
                     style: TextStyle(

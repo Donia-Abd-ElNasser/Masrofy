@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
+import 'package:masrofy/core/routes.dart';
 import 'package:masrofy/screens/home/view/widgets/pie_and_statistics.dart';
 import 'package:masrofy/screens/home/view/widgets/smart_alert.dart';
 
@@ -64,7 +66,7 @@ class HomeView extends StatelessWidget {
               // Balance card
               Container(
                 width: double.infinity,
-                padding: EdgeInsets.all(width * 0.05),
+                padding: EdgeInsets.all(width * 0.048),
                 decoration: BoxDecoration(
                   image: DecorationImage(
                     image: AssetImage('assets/images/balance.jpg'),
@@ -77,14 +79,14 @@ class HomeView extends StatelessWidget {
                   children: [
                     const Text(
                       "Total Balance",
-                      style: TextStyle(color: Colors.white70, fontSize: 14),
+                      style: TextStyle(color: Colors.white70, fontSize: 13),
                     ),
                     SizedBox(height: height * 0.005),
                     const Text(
                       "£3,000",
                       style: TextStyle(
                         color: Colors.white,
-                        fontSize: 26,
+                        fontSize: 22,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -93,7 +95,7 @@ class HomeView extends StatelessWidget {
                       "from £20,000",
                       style: TextStyle(
                         color: Colors.white,
-                        fontSize: 12,
+                        fontSize: 10,
                         fontWeight: FontWeight.w700,
                       ),
                     ),
@@ -104,10 +106,33 @@ class HomeView extends StatelessWidget {
                         value: 0.7,
                         color: Color(0xff329EC5),
                         backgroundColor: Colors.white24,
-                        minHeight: 8,
+                        minHeight: 6,
                       ),
                     ),
                     SizedBox(height: height * 0.01),
+                    GestureDetector(
+                      onTap: (){
+                        GoRouter.of(context).push(AppRoutes.kWalletView);
+                      },
+                      child: Row(
+                       // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        
+                        children: [
+                         const Text(
+                        "My Wallet",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 10,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                      SizedBox(width: 5,) ,
+                                         Icon(Icons.arrow_circle_right,size:20,color: Colors.white, ),
+                      
+                        ],
+                      ),
+                    )
                   ],
                 ),
               ),

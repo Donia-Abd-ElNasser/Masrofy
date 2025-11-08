@@ -23,7 +23,7 @@ appBar: AppBar(
    automaticallyImplyLeading: false,
         backgroundColor: kPrimaryColor,
         elevation: 0,
-        title: CustomAppBar(width: width, text: 'Analytics and reports')
+        title: CustomAppBar(width: width, text: 'Analytics')
       ),
       body:SafeArea(
         child: SingleChildScrollView(
