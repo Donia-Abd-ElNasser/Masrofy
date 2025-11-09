@@ -31,7 +31,7 @@ abstract class AppRoutes {
   static const kBudgetView = '/budget';
   static GoRouter getRouter() {
     return GoRouter(
-      initialLocation: kSplashView,
+      initialLocation: kHomeView,
       routes: [
         animatedRoute(path: kSplashView, child: const SplashScreen()),
         animatedRoute(path: kWelcomeView, child: const WelcomeView()),

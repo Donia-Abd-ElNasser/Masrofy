@@ -29,7 +29,7 @@ class BudgetView extends StatelessWidget {
           children: [
             SizedBox(height: height * 0.019),
 
-            // 🔍 Search Bar
+          
             TextField(
               cursorColor: Colors.black,
               cursorHeight: 18,
@@ -69,7 +69,7 @@ class BudgetView extends StatelessWidget {
 
             SizedBox(height: height * 0.005),
 
-            // 🧾 Transactions
+           
            BudgetWidget(height: height, width: width, date: "October 28, 2025", amount: "-£5,430", title: 'Supermarket purchases', place: "Al - Habib", icon:'assets/images/mdi_shopping.png' )
 ,BudgetWidget(height: height, width: width, date: "October 27, 2025", amount: '"-£420"', title: "Restaurant lunch", place: '"Hassanien"', icon: 'assets/images/mdi_food.png'),
 BudgetWidget(height: height, width: width, date: "October 27, 2025", amount: '"-£1,200"', title: 'Car fuel', place: "ENI", icon: 'assets/images/roentgen_fuel-station.png'),

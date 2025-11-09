@@ -57,7 +57,11 @@ class HomeView extends StatelessWidget {
                       ),
                     ],
                   ),
-                  const Icon(FontAwesomeIcons.solidBell, color: Colors.grey),
+                   IconButton(
+                    onPressed: (){
+GoRouter.of(context).push(AppRoutes.kNotificationView);
+                    },
+                   icon: Icon( FontAwesomeIcons.solidBell, color: Colors.grey)),
                 ],
               ),
 
