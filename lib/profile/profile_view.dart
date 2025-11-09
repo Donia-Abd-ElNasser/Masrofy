@@ -45,20 +45,20 @@ class ProfileView extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "Ahmed Khaled",
+                          "Ahmed",
                           style: TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
                             fontSize: width * 0.045,
                           ),
                         ),
-                        Text(
-                          "AhmedAkoush@Mail.Com",
-                          style: TextStyle(
-                            color: Colors.grey.shade400,
-                            fontSize: width * 0.035,
-                          ),
-                        ),
+                        // Text(
+                        //   "AhmedAkoush@Mail.Com",
+                        //   style: TextStyle(
+                        //     color: Colors.grey.shade400,
+                        //     fontSize: width * 0.035,
+                        //   ),
+                        // ),
                       ],
                     ),
                   ),

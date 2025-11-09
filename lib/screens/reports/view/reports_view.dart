@@ -38,6 +38,8 @@ appBar: AppBar(
                   PieAndStatistics(height: height)
                     // SizedBox(height: 20,),
                     ,
+
+                    SizedBox(height: height*0.015,),
                 SmartAlert(width: width)
                   ],
                 ),

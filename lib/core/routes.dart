@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:masrofy/profile/profile_view.dart';
+import 'package:masrofy/profile/required_info.dart';
 
 import 'package:masrofy/screens/Auth/views/phone_view.dart';
 import 'package:masrofy/screens/Auth/views/verify_phone_view.dart';
@@ -24,7 +25,7 @@ abstract class AppRoutes {
   static const kTransactionView = '/transaction';
   static const kProfileView = '/profile';
   static const kHomeView = '/home';
-
+static const kInfoView = '/info';
   static const kNotificationView = '/notification';
   static const kWalletView = '/wallet';
   static const kReportsView = '/reports';
@@ -38,7 +39,7 @@ abstract class AppRoutes {
         animatedRoute(path: kOnBoardingView, child: const OnboardingView()),
         animatedRoute(path: kVerifyView, child: VerifyPhoneView()),
         animatedRoute(path: kPhoneView, child: const PhoneView()),
-
+  animatedRoute(path: kInfoView, child: const InfoView()),
         ShellRoute(
           builder: (context, state, child) {
             return Scaffold(

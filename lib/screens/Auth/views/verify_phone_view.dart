@@ -56,7 +56,7 @@ class _VerifyPhoneViewState extends State<VerifyPhoneView> {
               );
             }
             if (state is AuthSuccess) {
-              GoRouter.of(context).pushReplacement(AppRoutes.kHomeView);
+              GoRouter.of(context).pushReplacement(AppRoutes.kInfoView);
             }
           },
           builder: (context, state) {

@@ -1,6 +1,9 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:masrofy/core/routes.dart';
 import 'package:masrofy/screens/home/view/widgets/pie_and_statistics.dart';
 import 'package:masrofy/screens/home/view/widgets/smart_alert.dart';
@@ -13,6 +16,9 @@ class HomeView extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     final width = size.width;
     final height = size.height;
+// final data = GoRouterState.of(context).extra as Map;
+// final name = data['name'];
+// final XFile? imageFile = data['image'];
 
     return Scaffold(
       body: SafeArea(
@@ -31,11 +37,11 @@ class HomeView extends StatelessWidget {
                 children: [
                   Row(
                     children: [
-                      const CircleAvatar(
+                       CircleAvatar(
                         radius: 25,
-                        backgroundImage: AssetImage(
-                          'assets/images/profile.png',
-                        ),
+                        backgroundImage:  AssetImage("assets/images/profile.png")
+                            
+                            ,
                       ),
                       SizedBox(width: width * 0.03),
                       Column(
@@ -46,7 +52,7 @@ class HomeView extends StatelessWidget {
                             style: TextStyle(fontSize: 14, color: Colors.grey),
                           ),
                           Text(
-                            "Ahmed Khaled",
+                            'Ahmed',
                             style: TextStyle(
                               fontSize: width * 0.05,
                               fontWeight: FontWeight.bold,

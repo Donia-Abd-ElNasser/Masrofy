@@ -26,15 +26,16 @@ final String text;
                 children: [
                   
                   Backbutton(width: width),
-                   SizedBox(width: width*0.19),
-                   Text(
-                    text,
-                    style: TextStyle(
-                      fontSize: 20,
-                      color: Colors.black,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
+                 SizedBox(width: width*0.18),
+                 
+                      Text(
+                      text,
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.black,
+                        fontWeight: FontWeight.w600,
+                      ),
+                      )
                 ],
               ),
                Divider(

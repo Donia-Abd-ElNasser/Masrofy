@@ -26,7 +26,7 @@ class WelcomeView extends StatelessWidget {
              
             //   content: Text('You are Successfully Logged in')
             //   ));
-            GoRouter.of(context).push(AppRoutes.kHomeView);
+            GoRouter.of(context).push(AppRoutes.kInfoView);
            
           } else if (state is AuthFailure) {
             ScaffoldMessenger.of(
