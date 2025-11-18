@@ -267,10 +267,21 @@ class _TransactionViewState extends State<TransactionView> {
                   DropdownButtonFormField<String>(
                     value: selectedCategory,
                     dropdownColor: kPrimaryColor,
-                    decoration: InputDecoration().copyWith(
+                    style: const TextStyle(color: Colors.black),
+                    decoration: InputDecoration(
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(12),
-                        borderSide: BorderSide(color: Colors.black, width: 2),
+                        borderSide: const BorderSide(
+                          color: Colors.black,
+                          width: 2,
+                        ),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(12),
+                        borderSide: const BorderSide(
+                          color: Colors.black,
+                          width: 2,
+                        ),
                       ),
                     ),
                     items: const [
@@ -278,6 +289,8 @@ class _TransactionViewState extends State<TransactionView> {
                         value: "Select category",
                         child: Text("Select category"),
                       ),
+
+                      // ------------------- OLD CATEGORIES ----------------------
                       DropdownMenuItem(value: "Food", child: Text("Food")),
                       DropdownMenuItem(
                         value: "Transport",
@@ -287,8 +300,31 @@ class _TransactionViewState extends State<TransactionView> {
                         value: "Shopping",
                         child: Text("Shopping"),
                       ),
+
+                      // ------------------- NEW CATEGORIES ----------------------
+                      DropdownMenuItem(
+                        value: "Electronics",
+                        child: Text("Electronics"),
+                      ),
+                      DropdownMenuItem(
+                        value: "Supermarket purchases",
+                        child: Text("Supermarket purchases"),
+                      ),
+                      DropdownMenuItem(
+                        value: "Installments",
+                        child: Text("Installments"),
+                      ),
+                      DropdownMenuItem(
+                        value: "Restaurant lunch",
+                        child: Text("Restaurant lunch"),
+                      ),
+                      DropdownMenuItem(
+                        value: "Car fuel",
+                        child: Text("Car fuel"),
+                      ),
                     ],
-                    onChanged: (v) => setState(() => selectedCategory = v!),
+                    onChanged:
+                        (value) => setState(() => selectedCategory = value!),
                   ),
 
                   SizedBox(height: height * 0.025),

@@ -141,4 +141,10 @@ class AuthCubit extends Cubit<AuthState> {
     await auth.signOut();
     emit(AuthInitial());
   }
+
+  void checkLogin() {
+    emit(AuthInitial());
+  }
+
+  bool get isLoggedIn => auth.currentUser != null;
 }

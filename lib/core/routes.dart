@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:masrofy/profile/profile_view.dart';
@@ -25,21 +26,25 @@ abstract class AppRoutes {
   static const kTransactionView = '/transaction';
   static const kProfileView = '/profile';
   static const kHomeView = '/home';
-static const kInfoView = '/info';
+  static const kInfoView = '/info';
   static const kNotificationView = '/notification';
   static const kWalletView = '/wallet';
   static const kReportsView = '/reports';
   static const kBudgetView = '/budget';
   static GoRouter getRouter() {
     return GoRouter(
-      initialLocation: kHomeView,
+      initialLocation:
+          FirebaseAuth.instance.currentUser == null
+              ? AppRoutes.kSplashView
+              : AppRoutes.kHomeView,
+
       routes: [
         animatedRoute(path: kSplashView, child: const SplashScreen()),
         animatedRoute(path: kWelcomeView, child: const WelcomeView()),
         animatedRoute(path: kOnBoardingView, child: const OnboardingView()),
         animatedRoute(path: kVerifyView, child: VerifyPhoneView()),
         animatedRoute(path: kPhoneView, child: const PhoneView()),
-  animatedRoute(path: kInfoView, child: const InfoView()),
+        animatedRoute(path: kInfoView, child: const InfoView()),
         ShellRoute(
           builder: (context, state, child) {
             return Scaffold(

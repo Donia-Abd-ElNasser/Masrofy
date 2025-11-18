@@ -145,6 +145,9 @@ import 'package:masrofy/core/routes.dart';
 import 'package:masrofy/core/utills/custom_app_bar.dart';
 import 'package:masrofy/screens/Auth/view_model/auth_cubit/auth_cubit.dart';
 import 'package:masrofy/screens/Auth/view_model/auth_cubit/auth_state.dart';
+import 'package:masrofy/screens/about_app.dart';
+import 'package:masrofy/screens/assistance.dart';
+import 'package:masrofy/screens/rate_app.dart';
 
 class ProfileView extends StatelessWidget {
   const ProfileView({super.key});
@@ -271,19 +274,36 @@ class ProfileView extends StatelessWidget {
                 _buildOptionTile(
                   icon: Icons.help_outline,
                   title: "Assistant and guidance",
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => AssistanceScreen(),
+                      ),
+                    );
+                  },
                 ),
 
                 _buildOptionTile(
                   icon: Icons.info_outline,
                   title: "About the app",
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => AboutAppScreen()),
+                    );
+                  },
                 ),
 
                 _buildOptionTile(
                   icon: Icons.star_border,
                   title: "Rate the app",
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => RateAppScreen()),
+                    );
+                  },
                 ),
 
                 SizedBox(height: height * 0.01),

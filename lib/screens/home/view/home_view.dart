@@ -182,7 +182,19 @@ class HomeView extends StatelessWidget {
                   SizedBox(height: height * 0.02),
 
                   /// ---------------------- PIE CHART ----------------------
-                  PieAndStatistics(height: height),
+                  /// ---------------------- PIE CHART ----------------------
+                  if (user != null)
+                    PieAndStatistics(
+                      height: height,
+                      userId: user.uid, // ✨ هنا حل المشكلة
+                    )
+                  else
+                    Center(
+                      child: Text(
+                        "Login to view statistics",
+                        style: TextStyle(color: Colors.grey, fontSize: 14),
+                      ),
+                    ),
                 ],
               ),
             );

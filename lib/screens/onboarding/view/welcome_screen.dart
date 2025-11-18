@@ -23,11 +23,10 @@ class WelcomeView extends StatelessWidget {
             //   context,
             // ).showSnackBar(const SnackBar(
             //   backgroundColor: Colors.green,
-             
+
             //   content: Text('You are Successfully Logged in')
             //   ));
             GoRouter.of(context).push(AppRoutes.kInfoView);
-           
           } else if (state is AuthFailure) {
             ScaffoldMessenger.of(
               context,
@@ -35,8 +34,6 @@ class WelcomeView extends StatelessWidget {
           }
         },
         builder: (context, state) {
-         
-
           return SafeArea(
             child: SingleChildScrollView(
               keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
@@ -93,7 +90,6 @@ class WelcomeView extends StatelessWidget {
                   // Social buttons
                   Row(
                     children: [
-                
                       Expanded(
                         child: SizedBox(
                           height: height * 0.065,

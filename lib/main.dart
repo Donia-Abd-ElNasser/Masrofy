@@ -10,19 +10,12 @@ import 'package:masrofy/screens/transaction/view_model/cubit.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  try {
-    await Firebase.initializeApp(
-      options: DefaultFirebaseOptions.currentPlatform,
-    );
-    print('Firebase initialized successfully');
-  } catch (e) {
-    print('Firebase initialization error: $e');
-  }
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
   runApp(
     MultiBlocProvider(
       providers: [
-        BlocProvider(create: (context) => AuthCubit()),
+        BlocProvider(create: (context) => AuthCubit()..checkLogin()),
         BlocProvider(create: (context) => TransactionCubit()),
       ],
       child: const MyApp(),
