@@ -6,6 +6,8 @@ import 'package:image_picker/image_picker.dart';
 import 'package:masrofy/core/constants.dart';
 import 'package:masrofy/core/routes.dart';
 import 'package:masrofy/core/utills/custom_app_bar.dart';
+import 'package:masrofy/screens/home/view/home_view.dart';
+import 'package:masrofy/screens/home/view/widgets/custom_navigation_bar.dart';
 
 class InfoView extends StatefulWidget {
   const InfoView({super.key});
@@ -120,14 +122,7 @@ class _InfoViewState extends State<InfoView> {
                       ),
                     );
                     // Navigator.pop(context);
-                    GoRouter.of(context).push(
-                      AppRoutes.kHomeView,
-
-                      //                   extra: {
-                      //   'name': _nameController.text,
-                      //   'image': _imageFile,
-                      // },
-                    );
+                    context.go(AppRoutes.kHomeView);
                   } else {
                     ScaffoldMessenger.of(context).showSnackBar(
                       const SnackBar(content: Text("Please enter your name")),
