@@ -23,11 +23,10 @@ class WelcomeView extends StatelessWidget {
             //   context,
             // ).showSnackBar(const SnackBar(
             //   backgroundColor: Colors.green,
-             
+
             //   content: Text('You are Successfully Logged in')
             //   ));
             GoRouter.of(context).push(AppRoutes.kInfoView);
-           
           } else if (state is AuthFailure) {
             ScaffoldMessenger.of(
               context,
@@ -35,8 +34,6 @@ class WelcomeView extends StatelessWidget {
           }
         },
         builder: (context, state) {
-         
-
           return SafeArea(
             child: SingleChildScrollView(
               keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
@@ -93,7 +90,6 @@ class WelcomeView extends StatelessWidget {
                   // Social buttons
                   Row(
                     children: [
-                
                       Expanded(
                         child: SizedBox(
                           height: height * 0.065,
@@ -107,12 +103,22 @@ class WelcomeView extends StatelessWidget {
                                       ).signInWithGoogle();
                                     },
                             style: ElevatedButton.styleFrom(
-                              backgroundColor: const Color(0xFFFFCDD2),
-                              foregroundColor: const Color(0xFFD32F2F),
+                              backgroundColor: const Color.fromARGB(
+                                255,
+                                201,
+                                198,
+                                198,
+                              ),
+                              foregroundColor: const Color.fromARGB(
+                                209,
+                                0,
+                                0,
+                                0,
+                              ),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(12),
                               ),
-                              elevation: 0,
+                              elevation: 3,
                             ),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -129,7 +135,7 @@ class WelcomeView extends StatelessWidget {
                                 else ...[
                                   const Icon(
                                     FontAwesomeIcons.google,
-                                    color: Color(0xFFD32F2F),
+                                    color: Color.fromARGB(255, 5, 5, 5),
                                     size: 15,
                                   ),
                                   const SizedBox(width: 10),
@@ -159,19 +165,29 @@ class WelcomeView extends StatelessWidget {
                               GoRouter.of(context).push(AppRoutes.kPhoneView);
                             },
                             style: ElevatedButton.styleFrom(
-                              backgroundColor: const Color(0xFFBBDEFB),
-                              foregroundColor: const Color(0xFF1976D2),
+                              backgroundColor: const Color.fromARGB(
+                                255,
+                                201,
+                                198,
+                                198,
+                              ),
+                              foregroundColor: const Color.fromARGB(
+                                209,
+                                0,
+                                0,
+                                0,
+                              ),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(12),
                               ),
-                              elevation: 0,
+                              elevation: 3,
                             ),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 const Icon(
                                   FontAwesomeIcons.phone,
-                                  color: Color(0xFF1976D2),
+                                  color: Color.fromARGB(255, 12, 12, 12),
                                   size: 15,
                                 ),
                                 const SizedBox(width: 10),

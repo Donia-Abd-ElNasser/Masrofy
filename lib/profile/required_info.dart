@@ -1,4 +1,3 @@
-
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -7,7 +6,8 @@ import 'package:image_picker/image_picker.dart';
 import 'package:masrofy/core/constants.dart';
 import 'package:masrofy/core/routes.dart';
 import 'package:masrofy/core/utills/custom_app_bar.dart';
-
+import 'package:masrofy/screens/home/view/home_view.dart';
+import 'package:masrofy/screens/home/view/widgets/custom_navigation_bar.dart';
 
 class InfoView extends StatefulWidget {
   const InfoView({super.key});
@@ -19,7 +19,6 @@ class InfoView extends StatefulWidget {
 class _InfoViewState extends State<InfoView> {
   XFile? _imageFile;
   final TextEditingController _nameController = TextEditingController();
-
 
   Future<void> _pickImage() async {
     final picker = ImagePicker();
@@ -38,7 +37,7 @@ class _InfoViewState extends State<InfoView> {
     final width = MediaQuery.of(context).size.width;
 
     return Scaffold(
-    //  backgroundColor: const Color(0xFF1E1E1E),
+      //  backgroundColor: const Color(0xFF1E1E1E),
       appBar: AppBar(
         automaticallyImplyLeading: false,
         backgroundColor: kPrimaryColor,
@@ -53,28 +52,28 @@ class _InfoViewState extends State<InfoView> {
           children: [
             SizedBox(height: height * 0.05),
 
-       GestureDetector(
-  onTap: _pickImage,
-  child: CircleAvatar(
-    radius: width * 0.18,
-    backgroundColor: kDarkGrey,
-    backgroundImage: _imageFile != null
-        ? FileImage(File(_imageFile!.path))
-        : null,
-    child: _imageFile == null
-        ? Icon(
-            Icons.camera_alt,
-            color: Colors.grey.shade400,
-            size: width * 0.1,
-          )
-        : null,
-  ),
-),
-
+            GestureDetector(
+              onTap: _pickImage,
+              child: CircleAvatar(
+                radius: width * 0.18,
+                backgroundColor: kDarkGrey,
+                backgroundImage:
+                    _imageFile != null
+                        ? FileImage(File(_imageFile!.path))
+                        : null,
+                child:
+                    _imageFile == null
+                        ? Icon(
+                          Icons.camera_alt,
+                          color: Colors.grey.shade400,
+                          size: width * 0.1,
+                        )
+                        : null,
+              ),
+            ),
 
             SizedBox(height: height * 0.04),
 
-        
             Align(
               alignment: Alignment.centerLeft,
               child: Text(
@@ -101,7 +100,7 @@ class _InfoViewState extends State<InfoView> {
                 ),
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
-                  borderSide: BorderSide(color: kDarkGrey,width: 2),
+                  borderSide: BorderSide(color: kDarkGrey, width: 2),
                 ),
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
@@ -112,25 +111,18 @@ class _InfoViewState extends State<InfoView> {
 
             SizedBox(height: height * 0.05),
 
-         
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
                 onPressed: () {
                   if (_nameController.text.isNotEmpty) {
-                  
                     ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(content: Text("Profile saved successfully!")),
+                      const SnackBar(
+                        content: Text("Profile saved successfully!"),
+                      ),
                     );
                     // Navigator.pop(context);
-                    GoRouter.of(context).push(AppRoutes.kHomeView,
-                    
-  //                   extra: {
-  //   'name': _nameController.text,
-  //   'image': _imageFile,
-  // },
-  
-  );
+                    context.go(AppRoutes.kHomeView);
                   } else {
                     ScaffoldMessenger.of(context).showSnackBar(
                       const SnackBar(content: Text("Please enter your name")),
