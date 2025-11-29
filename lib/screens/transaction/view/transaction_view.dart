@@ -450,7 +450,10 @@ class _TransactionViewState extends State<TransactionView> {
                         child: ElevatedButton(
                           onPressed: () => save(context),
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: Color(0xff0F3A1B),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                            backgroundColor: Color.fromARGB(255, 0, 130, 134),
                             padding: EdgeInsets.symmetric(vertical: 15),
                           ),
                           child: Row(
@@ -479,7 +482,10 @@ class _TransactionViewState extends State<TransactionView> {
                         child: ElevatedButton(
                           onPressed: () => Navigator.pop(context),
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: Color(0xff5A1012),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                            backgroundColor: Color.fromARGB(255, 107, 109, 110),
                             padding: EdgeInsets.symmetric(vertical: 15),
                           ),
                           child: Row(
