@@ -33,7 +33,7 @@ class AssistanceScreen extends StatelessWidget {
             padding: const EdgeInsets.all(20),
             margin: const EdgeInsets.all(16),
             decoration: BoxDecoration(
-              color: const Color(0xFF2D3748),
+              color: const Color(0xFF1E1E1E),
               borderRadius: BorderRadius.circular(20),
             ),
             child: Row(
@@ -42,7 +42,7 @@ class AssistanceScreen extends StatelessWidget {
                   width: 60,
                   height: 60,
                   decoration: BoxDecoration(
-                    color: const Color(0xFF4A5568),
+                    color: kGreyColor,
                     shape: BoxShape.circle,
                   ),
                   child: const Icon(
@@ -88,7 +88,7 @@ class AssistanceScreen extends StatelessWidget {
                 const Text(
                   'Quick Help',
                   style: TextStyle(
-                    color: Colors.white,
+                    color: Colors.black,
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
                   ),
@@ -136,7 +136,7 @@ class AssistanceScreen extends StatelessWidget {
               margin: const EdgeInsets.symmetric(horizontal: 16),
               padding: const EdgeInsets.all(20),
               decoration: BoxDecoration(
-                color: const Color(0xFF2D3748),
+                color: const Color(0xFF1E1E1E),
                 borderRadius: BorderRadius.circular(20),
               ),
               child: Column(
@@ -190,7 +190,7 @@ class AssistanceScreen extends StatelessWidget {
                 // Navigate to chat interface
               },
               style: ElevatedButton.styleFrom(
-                backgroundColor: const Color(0xFF4A5568),
+                backgroundColor: const Color(0xFF1E1E1E),
                 padding: const EdgeInsets.symmetric(
                   vertical: 15,
                   horizontal: 30,
@@ -231,7 +231,7 @@ class AssistanceScreen extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.all(15),
         decoration: BoxDecoration(
-          color: const Color(0xFF4A5568),
+          color: const Color(0xFF1E1E1E),
           borderRadius: BorderRadius.circular(15),
         ),
         child: Column(
@@ -260,7 +260,7 @@ class AssistanceScreen extends StatelessWidget {
       margin: const EdgeInsets.only(bottom: 15),
       padding: const EdgeInsets.all(15),
       decoration: BoxDecoration(
-        color: const Color(0xFF4A5568),
+        color: kGreyColor,
         borderRadius: BorderRadius.circular(12),
       ),
       child: Column(
@@ -269,7 +269,7 @@ class AssistanceScreen extends StatelessWidget {
           Text(
             question,
             style: const TextStyle(
-              color: Colors.white,
+              color: Colors.black,
               fontSize: 16,
               fontWeight: FontWeight.w600,
             ),
@@ -277,7 +277,10 @@ class AssistanceScreen extends StatelessWidget {
           const SizedBox(height: 8),
           Text(
             answer,
-            style: const TextStyle(color: Color(0xFFCBD5E0), fontSize: 14),
+            style: const TextStyle(
+              color: Color.fromARGB(255, 80, 80, 80),
+              fontSize: 14,
+            ),
           ),
         ],
       ),

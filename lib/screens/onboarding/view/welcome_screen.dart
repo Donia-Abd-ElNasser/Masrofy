@@ -19,14 +19,7 @@ class WelcomeView extends StatelessWidget {
       body: BlocConsumer<AuthCubit, AuthState>(
         listener: (context, state) {
           if (state is AuthSuccess) {
-            // ScaffoldMessenger.of(
-            //   context,
-            // ).showSnackBar(const SnackBar(
-            //   backgroundColor: Colors.green,
-
-            //   content: Text('You are Successfully Logged in')
-            //   ));
-            GoRouter.of(context).push(AppRoutes.kInfoView);
+            GoRouter.of(context).push(AppRoutes.kHomeView);
           } else if (state is AuthFailure) {
             ScaffoldMessenger.of(
               context,
@@ -90,6 +83,7 @@ class WelcomeView extends StatelessWidget {
                   // Social buttons
                   Row(
                     children: [
+                      // ---------------- GOOGLE BUTTON ----------------
                       Expanded(
                         child: SizedBox(
                           height: height * 0.065,
@@ -109,16 +103,16 @@ class WelcomeView extends StatelessWidget {
                                 198,
                                 198,
                               ),
-                              foregroundColor: const Color.fromARGB(
-                                209,
-                                0,
-                                0,
-                                0,
-                              ),
+                              foregroundColor: Colors.black,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(12),
+                                side: const BorderSide(
+                                  color: Colors.black,
+                                  width: 1.5,
+                                ), // BORDER
                               ),
-                              elevation: 3,
+                              elevation: 0, // NO SHADOW
+                              shadowColor: Colors.transparent, // NO SHADOW
                             ),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -135,7 +129,7 @@ class WelcomeView extends StatelessWidget {
                                 else ...[
                                   const Icon(
                                     FontAwesomeIcons.google,
-                                    color: Color.fromARGB(255, 5, 5, 5),
+                                    color: Colors.black,
                                     size: 15,
                                   ),
                                   const SizedBox(width: 10),
@@ -156,7 +150,7 @@ class WelcomeView extends StatelessWidget {
 
                       SizedBox(width: width * 0.04),
 
-                      // 🔹 Phone Button
+                      // ---------------- PHONE BUTTON ----------------
                       Expanded(
                         child: SizedBox(
                           height: height * 0.065,
@@ -171,23 +165,23 @@ class WelcomeView extends StatelessWidget {
                                 198,
                                 198,
                               ),
-                              foregroundColor: const Color.fromARGB(
-                                209,
-                                0,
-                                0,
-                                0,
-                              ),
+                              foregroundColor: Colors.black,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(12),
+                                side: const BorderSide(
+                                  color: Colors.black,
+                                  width: 1.5,
+                                ), // BORDER
                               ),
-                              elevation: 3,
+                              elevation: 0, // NO SHADOW
+                              shadowColor: Colors.transparent, // NO SHADOW
                             ),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 const Icon(
                                   FontAwesomeIcons.phone,
-                                  color: Color.fromARGB(255, 12, 12, 12),
+                                  color: Colors.black,
                                   size: 15,
                                 ),
                                 const SizedBox(width: 10),

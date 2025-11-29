@@ -52,7 +52,7 @@ class AboutAppScreen extends StatelessWidget {
       width: double.infinity,
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
-        color: const Color(0xFF2D3748),
+        color: const Color(0xFF1E1E1E),
         borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(
@@ -68,7 +68,7 @@ class AboutAppScreen extends StatelessWidget {
             width: 80,
             height: 80,
             decoration: BoxDecoration(
-              color: const Color(0xFF4A5568),
+              color: kGreyColor,
               shape: BoxShape.circle,
               boxShadow: [
                 BoxShadow(
@@ -125,7 +125,7 @@ class AboutAppScreen extends StatelessWidget {
         Container(
           padding: const EdgeInsets.all(20),
           decoration: BoxDecoration(
-            color: const Color(0xFF2D3748),
+            color: const Color(0xFF1E1E1E),
             borderRadius: BorderRadius.circular(15),
           ),
           child: Column(
@@ -172,7 +172,7 @@ class AboutAppScreen extends StatelessWidget {
           width: 40,
           height: 40,
           decoration: BoxDecoration(
-            color: const Color(0xFF4A5568),
+            color: kGreyColor,
             borderRadius: BorderRadius.circular(10),
           ),
           child: Icon(icon, color: Colors.white, size: 20),
@@ -206,7 +206,7 @@ class AboutAppScreen extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
-        color: const Color(0xFF2D3748),
+        color: const Color(0xFF1E1E1E),
         borderRadius: BorderRadius.circular(15),
       ),
       child: Column(

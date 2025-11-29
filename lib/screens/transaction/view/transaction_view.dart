@@ -202,6 +202,7 @@ class _TransactionViewState extends State<TransactionView> {
                           controller: amountController,
                           keyboardType: TextInputType.number,
                           decoration: InputDecoration(
+                            labelStyle: TextStyle(color: Colors.black),
                             labelText: "Amount",
                             enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(12),
@@ -334,6 +335,7 @@ class _TransactionViewState extends State<TransactionView> {
                     controller: descriptionController,
                     maxLines: 2,
                     decoration: InputDecoration(
+                      labelStyle: TextStyle(color: Colors.black),
                       labelText: "Description",
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(12),
@@ -356,26 +358,65 @@ class _TransactionViewState extends State<TransactionView> {
                         firstDate: DateTime(2020),
                         lastDate: DateTime(2030),
                         initialDate: DateTime.now(),
+                        builder: (context, child) {
+                          return Theme(
+                            data: Theme.of(context).copyWith(
+                              colorScheme: const ColorScheme.light(
+                                primary:
+                                    Colors
+                                        .black, // Selected date, header background
+                                onPrimary: Colors.white, // Text on header
+                                onSurface: Colors.black, // Body text (days)
+                              ),
+                              textButtonTheme: TextButtonThemeData(
+                                style: TextButton.styleFrom(
+                                  foregroundColor:
+                                      Colors.black, // OK & CANCEL buttons
+                                ),
+                              ),
+                            ),
+                            child: child!,
+                          );
+                        },
                       );
-                      if (picked != null) setState(() => selectedDate = picked);
+
+                      if (picked != null) {
+                        setState(() {
+                          selectedDate = picked;
+                        });
+                      }
                     },
                     child: InputDecorator(
                       decoration: InputDecoration(
                         labelText: "Date",
-                        suffixIcon: Icon(Icons.calendar_month_outlined),
+                        labelStyle: const TextStyle(color: Colors.black),
+                        floatingLabelStyle: const TextStyle(
+                          color: Colors.black,
+                        ),
+                        suffixIcon: const Icon(
+                          Icons.calendar_month_outlined,
+                          color: Colors.black,
+                        ),
                         enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(12),
-                          borderSide: BorderSide(color: Colors.black, width: 2),
+                          borderSide: const BorderSide(
+                            color: Colors.black,
+                            width: 2,
+                          ),
                         ),
                         focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(12),
-                          borderSide: BorderSide(color: Colors.black, width: 2),
+                          borderSide: const BorderSide(
+                            color: Colors.black,
+                            width: 2,
+                          ),
                         ),
                       ),
                       child: Text(
                         selectedDate == null
                             ? "Select date"
                             : "${selectedDate!.day}/${selectedDate!.month}/${selectedDate!.year}",
+                        style: const TextStyle(color: Colors.black),
                       ),
                     ),
                   ),
