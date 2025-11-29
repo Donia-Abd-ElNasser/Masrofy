@@ -485,7 +485,7 @@ class _TransactionViewState extends State<TransactionView> {
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(12),
                             ),
-                            backgroundColor: Color.fromARGB(255, 107, 109, 110),
+                            backgroundColor: const Color(0xFF1E1E1E),
                             padding: EdgeInsets.symmetric(vertical: 15),
                           ),
                           child: Row(
