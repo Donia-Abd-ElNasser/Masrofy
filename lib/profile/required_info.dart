@@ -1,13 +1,11 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:masrofy/core/constants.dart';
 import 'package:masrofy/core/routes.dart';
 import 'package:masrofy/core/utills/custom_app_bar.dart';
-import 'package:masrofy/screens/home/view/home_view.dart';
-import 'package:masrofy/screens/home/view/widgets/custom_navigation_bar.dart';
+
 
 class InfoView extends StatefulWidget {
   const InfoView({super.key});

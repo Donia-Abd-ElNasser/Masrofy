@@ -124,11 +124,11 @@ class WelcomeView extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 if (state is AuthLoading)
-                                  const SizedBox(
+                                   SizedBox(
                                     height: 20,
                                     width: 20,
                                     child: CircularProgressIndicator(
-                                      color: Colors.red,
+                                      color: Colors.black,
                                       strokeWidth: 2,
                                     ),
                                   )

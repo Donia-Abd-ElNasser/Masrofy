@@ -186,7 +186,7 @@ class HomeView extends StatelessWidget {
                   if (user != null)
                     PieAndStatistics(
                       height: height,
-                      userId: user.uid, // ✨ هنا حل المشكلة
+                      userId: user.uid,
                     )
                   else
                     Center(
