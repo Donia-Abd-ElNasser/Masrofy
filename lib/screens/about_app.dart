@@ -1,6 +1,5 @@
 // lib/screens/about_app/view/about_app_screen.dart
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:masrofy/core/constants.dart';
 
 class AboutAppScreen extends StatelessWidget {

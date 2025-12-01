@@ -1,8 +1,3 @@
-// import 'package:flutter/material.dart';
-// import 'package:go_router/go_router.dart';
-// import 'package:masrofy/core/constants.dart';
-// import 'package:masrofy/core/routes.dart';
-// import 'package:masrofy/core/utills/custom_app_bar.dart';
 
 // class ProfileView extends StatelessWidget {
 //   const ProfileView({super.key});
