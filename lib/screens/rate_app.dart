@@ -35,15 +35,9 @@ class RateAppScreen extends StatelessWidget {
               width: double.infinity,
               padding: const EdgeInsets.all(30),
               decoration: BoxDecoration(
-                color: const Color(0xFF2D3748),
+                color: const Color(0xFF1E1E1E),
                 borderRadius: BorderRadius.circular(20),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withOpacity(0.3),
-                    blurRadius: 10,
-                    offset: const Offset(0, 4),
-                  ),
-                ],
+                boxShadow: [],
               ),
               child: Column(
                 children: [
@@ -86,7 +80,7 @@ class RateAppScreen extends StatelessWidget {
             Container(
               padding: const EdgeInsets.all(20),
               decoration: BoxDecoration(
-                color: const Color(0xFF2D3748),
+                color: const Color(0xFF1E1E1E),
                 borderRadius: BorderRadius.circular(20),
               ),
               child: Column(
@@ -134,7 +128,7 @@ class RateAppScreen extends StatelessWidget {
             Container(
               padding: const EdgeInsets.all(20),
               decoration: BoxDecoration(
-                color: const Color(0xFF2D3748),
+                color: const Color(0xFF1E1E1E),
                 borderRadius: BorderRadius.circular(20),
               ),
               child: Column(
@@ -229,7 +223,7 @@ class RateAppScreen extends StatelessWidget {
             Container(
               padding: const EdgeInsets.all(20),
               decoration: BoxDecoration(
-                color: const Color(0xFF2D3748),
+                color: const Color(0xFF1E1E1E),
                 borderRadius: BorderRadius.circular(20),
               ),
               child: Column(
@@ -307,7 +301,7 @@ class RateAppScreen extends StatelessWidget {
       context: context,
       builder:
           (context) => AlertDialog(
-            backgroundColor: const Color(0xFF2D3748),
+            backgroundColor: const Color(0xFF1E1E1E),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(20),
             ),

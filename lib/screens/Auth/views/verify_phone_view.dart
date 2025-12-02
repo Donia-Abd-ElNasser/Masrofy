@@ -14,8 +14,10 @@ class VerifyPhoneView extends StatefulWidget {
 }
 
 class _VerifyPhoneViewState extends State<VerifyPhoneView> {
-  final List<TextEditingController> _controllers =
-      List.generate(6, (_) => TextEditingController());
+  final List<TextEditingController> _controllers = List.generate(
+    6,
+    (_) => TextEditingController(),
+  );
   final List<FocusNode> _focusNodes = List.generate(6, (_) => FocusNode());
 
   @override
@@ -56,7 +58,7 @@ class _VerifyPhoneViewState extends State<VerifyPhoneView> {
               );
             }
             if (state is AuthSuccess) {
-              GoRouter.of(context).pushReplacement(AppRoutes.kInfoView);
+              GoRouter.of(context).pushReplacement(AppRoutes.kHomeView);
             }
           },
           builder: (context, state) {
@@ -148,7 +150,8 @@ class _VerifyPhoneViewState extends State<VerifyPhoneView> {
                                         ),
                                       ),
                                     ),
-                                    onChanged: (value) => _onChanged(value, index),
+                                    onChanged:
+                                        (value) => _onChanged(value, index),
                                   ),
                                 );
                               }),
@@ -166,35 +169,43 @@ class _VerifyPhoneViewState extends State<VerifyPhoneView> {
                                     borderRadius: BorderRadius.circular(12),
                                   ),
                                 ),
-                                onPressed: state is AuthLoading
-                                    ? null
-                                    : () {
-                                        final code = _controllers
-                                            .map((e) => e.text)
-                                            .join()
-                                            .trim();
-                                        if (code.length ==6 ) {
-                                        BlocProvider.of<AuthCubit>(context).verifyOtp(code);
-                                        } else {
-                                          ScaffoldMessenger.of(context)
-                                              .showSnackBar(
-                                            const SnackBar(
-                                              content: Text(
-                                                  'Please enter the 6-digit code.'),
-                                            ),
-                                          );
-                                        }
-                                      },
-                                child: state is AuthLoading
-                                    ? const CircularProgressIndicator(
-                                        color: Colors.white)
-                                    : Text(
-                                        "Verify",
-                                        style: TextStyle(
-                                          fontSize: width * 0.045,
+                                onPressed:
+                                    state is AuthLoading
+                                        ? null
+                                        : () {
+                                          final code =
+                                              _controllers
+                                                  .map((e) => e.text)
+                                                  .join()
+                                                  .trim();
+                                          if (code.length == 6) {
+                                            BlocProvider.of<AuthCubit>(
+                                              context,
+                                            ).verifyOtp(code);
+                                          } else {
+                                            ScaffoldMessenger.of(
+                                              context,
+                                            ).showSnackBar(
+                                              const SnackBar(
+                                                content: Text(
+                                                  'Please enter the 6-digit code.',
+                                                ),
+                                              ),
+                                            );
+                                          }
+                                        },
+                                child:
+                                    state is AuthLoading
+                                        ? const CircularProgressIndicator(
                                           color: Colors.white,
+                                        )
+                                        : Text(
+                                          "Verify",
+                                          style: TextStyle(
+                                            fontSize: width * 0.045,
+                                            color: Colors.white,
+                                          ),
                                         ),
-                                      ),
                               ),
                             ),
 
@@ -211,20 +222,23 @@ class _VerifyPhoneViewState extends State<VerifyPhoneView> {
                                     borderRadius: BorderRadius.circular(12),
                                   ),
                                 ),
-                                onPressed: state is AuthLoading
-                                    ? null
-                                    : () {
-                                        for (var c in _controllers) {
-                                          c.clear();
-                                        }
-                                        ScaffoldMessenger.of(context)
-                                            .showSnackBar(
-                                          const SnackBar(
-                                            content: Text(
-                                                'Verification code resent!'),
-                                          ),
-                                        );
-                                      },
+                                onPressed:
+                                    state is AuthLoading
+                                        ? null
+                                        : () {
+                                          for (var c in _controllers) {
+                                            c.clear();
+                                          }
+                                          ScaffoldMessenger.of(
+                                            context,
+                                          ).showSnackBar(
+                                            const SnackBar(
+                                              content: Text(
+                                                'Verification code resent!',
+                                              ),
+                                            ),
+                                          );
+                                        },
                                 child: Text(
                                   "Send Again",
                                   style: TextStyle(
