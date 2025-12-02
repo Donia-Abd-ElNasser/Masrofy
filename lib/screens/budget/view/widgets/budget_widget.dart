@@ -11,13 +11,14 @@ class BudgetWidget extends StatelessWidget {
     required this.amount,
     required this.title,
     required this.place,
-    required this.icon,
+    required this.icon, required this.type,
   }) : super(key: key);
 
   final double width;
   final double height;
-  final String date, amount, title, place;
+  final String date, amount, title, place,type;
   final String icon;
+
 
   @override
   Widget build(BuildContext context) {
@@ -56,7 +57,7 @@ class BudgetWidget extends StatelessWidget {
                       SizedBox(height: height * 0.005),
                       Center(
                         child: Text(
-                          "-£5,430",
+                          amount,
                           style: TextStyle(
                             color: Color(0xffFF0005),
                             fontSize: width * 0.07,
@@ -65,12 +66,12 @@ class BudgetWidget extends StatelessWidget {
                         ),
                       ),
                       SizedBox(height: height * 0.03),
-                      RowDetails("Category", "Shopping", width),
+                      RowDetails("Category", title, width),
                       RowDetails("Description",
-                          "Purchases from Habib Supermarket", width),
+                          place, width),
                       RowDetails(
-                          "Date and Time", "October 28, 2025 - 2:30 PM", width),
-                      RowDetails("Location", "Al - Habib, Qena", width),
+                          "Date", date, width),
+                     
                       SizedBox(height: height * 0.03),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -150,19 +151,21 @@ class BudgetWidget extends StatelessWidget {
                   Row(
                     children: [
                       Container(
-                        width: width * 0.1,
-                        height: width * 0.1,
-                        decoration: BoxDecoration(
-                          image: const DecorationImage(
-                            image:
-                                AssetImage('assets/images/Ellipse 194 (3).png'),
-                          ),
-                          borderRadius: BorderRadius.circular(10),
+                        width: width * 0.12,
+                        height: width * 0.12,
+                        decoration: BoxDecoration(color: type=='income'?Color(0xff0F3A1B):Color(0xff5A1012)
+                          ,
+                          // image: const DecorationImage(
+                          //   image:
+                          //       AssetImage('assets/images/Ellipse 194 (3).png'),
+                          // ),
+                          border: Border.all(color: type=='income'?Color.fromARGB(255, 39, 135, 66):Colors.redAccent,width: 3),
+                          borderRadius: BorderRadius.circular(50),
                         ),
                         child: Image.asset(
                           icon,
-                          width: 28,
-                          height: 28,
+                          width: 20,
+                          height: 20,
                         ),
                       ),
                       SizedBox(width: width * 0.04),
@@ -187,7 +190,7 @@ class BudgetWidget extends StatelessWidget {
                   Text(
                     amount,
                     style: TextStyle(
-                      color: Colors.redAccent,
+                      color:type=='expense'? Colors.redAccent:Color.fromARGB(255, 39, 135, 66),
                       fontWeight: FontWeight.bold,
                       fontSize: width * 0.04,
                     ),

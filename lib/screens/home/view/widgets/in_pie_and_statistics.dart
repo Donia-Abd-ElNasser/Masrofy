@@ -7,11 +7,11 @@ import 'package:masrofy/screens/home/view/widgets/pie_section.dart';
 import 'package:masrofy/screens/transaction/model.dart';
 import 'package:masrofy/screens/transaction/view_model/cubit.dart';
 
-class PieAndStatistics extends StatelessWidget {
+class IncomePieAndStatistics extends StatelessWidget {
   final double height;
   final String userId;
 
-  const PieAndStatistics({
+  const IncomePieAndStatistics({
     super.key,
     required this.height,
     required this.userId,
@@ -56,10 +56,10 @@ class PieAndStatistics extends StatelessWidget {
 
   Widget _buildChartUI(List<TransactionModel> transactions) {
     /// 1️⃣ Filter ONLY expense
-    final expenses = transactions.where((t) => t.transactionType == "expense");
+    final incomes = transactions.where((t) => t.transactionType == "income");
 
     /// 2️⃣ Sum total
-    double total = expenses.fold(0, (sum, t) => sum + t.amount);
+    double total = incomes.fold(0, (sum, t) => sum + t.amount);
 
     if (total == 0) {
       return _emptyUI();
@@ -67,7 +67,7 @@ class PieAndStatistics extends StatelessWidget {
 
     /// 3️⃣ Category sums
     Map<String, double> sums = {};
-    for (var t in expenses) {
+    for (var t in incomes) {
       sums[t.category] = (sums[t.category] ?? 0) + t.amount;
     }
 
@@ -90,7 +90,7 @@ class PieAndStatistics extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const Text(
-            "Merchandise Category",
+            "Incomes Categories",
             style: TextStyle(
               fontSize: 18,
               fontWeight: FontWeight.bold,
@@ -155,6 +155,8 @@ class CategoryColors {
     "Shopping": Colors.pink,
     "Bills": Colors.indigo,
     "Other": Colors.grey,
+    "Extra Work":Colors.amberAccent,
+    "Monthly income":Colors.lightGreenAccent
   };
 
   static Color getColor(String cat) => colors[cat] ?? Colors.grey;

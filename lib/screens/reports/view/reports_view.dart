@@ -4,7 +4,8 @@ import 'package:masrofy/core/constants.dart';
 import 'package:masrofy/core/utills/custom_app_bar.dart';
 import 'package:masrofy/screens/Auth/view_model/auth_cubit/auth_cubit.dart';
 import 'package:masrofy/screens/Auth/view_model/auth_cubit/auth_state.dart';
-import 'package:masrofy/screens/home/view/widgets/pie_and_statistics.dart';
+import 'package:masrofy/screens/home/view/widgets/in_pie_and_statistics.dart';
+import 'package:masrofy/screens/home/view/widgets/out_pie_and_statistics.dart';
 import 'package:masrofy/screens/home/view/widgets/smart_alert.dart';
 
 class AnalyticsAndReportsView extends StatelessWidget {
@@ -39,7 +40,17 @@ class AnalyticsAndReportsView extends StatelessWidget {
                 children: [
                   /// ---------------------- PIE CHART ----------------------
                   if (user != null)
-                    PieAndStatistics(height: height, userId: user.uid)
+                    IncomePieAndStatistics(height: height, userId: user.uid)
+                  else
+                    Center(
+                      child: Text(
+                        "Login to view statistics",
+                        style: TextStyle(color: Colors.grey, fontSize: 14),
+                      ),
+                    ),
+                 SizedBox(height: height * 0.02),
+                  if (user != null)
+                    OutcomePieAndStatistics(height: height, userId: user.uid)
                   else
                     Center(
                       child: Text(

@@ -68,6 +68,7 @@ class BudgetView extends StatelessWidget {
               // 🔥 احسب إجمالي المصاريف هنا
               // ----------------------------------------------------
               double totalExpenses = 0;
+              double totalIncome = 0;
 
               for (var doc in transactions) {
                 final data = doc.data() as Map<String, dynamic>;
@@ -76,6 +77,12 @@ class BudgetView extends StatelessWidget {
                 }
               }
 
+              for (var doc in transactions) {
+                final data = doc.data() as Map<String, dynamic>;
+                if (data["transactionType"] == "income") {
+                  totalIncome += (data["amount"] ?? 0).toDouble();
+                }
+              }
               // ----------------------------------------------------
 
               return SingleChildScrollView(
@@ -103,6 +110,9 @@ class BudgetView extends StatelessWidget {
                     // -----------------------------------------------------------------
                     // 🔥 LIST OF TRANSACTIONS
                     // -----------------------------------------------------------------
+      
+                   
+                   
                     for (var doc in transactions)
                       Builder(
                         builder: (context) {
@@ -112,7 +122,7 @@ class BudgetView extends StatelessWidget {
                           final String place = data["description"];
                           final double amount = data["amount"];
                           final int dateMs = data["date"];
-
+                          final type = data['transactionType'];
                           final date = DateTime.fromMillisecondsSinceEpoch(
                             dateMs,
                           );
@@ -126,12 +136,13 @@ class BudgetView extends StatelessWidget {
                             iconPath =
                                 'assets/images/roentgen_fuel-station.png';
                           }
-
                           return BudgetWidget(
+                            type: type,
                             height: height,
                             width: width,
                             date: "${date.day}/${date.month}/${date.year}",
-                            amount: "-£$amount",
+                            amount:
+                                type == 'expense' ? "-£$amount" : "+£$amount",
                             title: title,
                             place: place,
                             icon: iconPath,
@@ -144,37 +155,80 @@ class BudgetView extends StatelessWidget {
                     // --------------------------------------------------------
                     // 🔥 TOTAL EXPENSES CARD (SHOWN CORRECTLY NOW)
                     // --------------------------------------------------------
-                    Container(
-                      width: double.infinity,
-                      padding: EdgeInsets.all(16),
-                      decoration: BoxDecoration(
-                        color: kDarkGrey,
-                        borderRadius: BorderRadius.circular(16),
-                        border: const Border(
-                          right: BorderSide(color: Colors.redAccent, width: 3),
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(16),
+                      child: Container(
+                        width: double.infinity,
+                        padding: EdgeInsets.all(16),
+                        decoration: const BoxDecoration(
+                          color: kDarkGrey,
+                          border: Border(
+                            left: BorderSide(color: Colors.redAccent, width: 3),
+                            right: BorderSide(
+                              color: Color.fromARGB(255, 39, 135, 66),
+                              width: 3,
+                            ),
+                          ),
                         ),
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            "Total expenses:",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                              fontSize: width * 0.04,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            // --- expense ---
+                            Column(
+                              children: [
+                                Text(
+                                  "Total expenses:",
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: width * 0.04,
+                                  ),
+                                ),
+                                SizedBox(height: 10),
+                                Text(
+                                  "-£${totalExpenses.toStringAsFixed(2)}",
+                                  style: TextStyle(
+                                    color: Color(0xffFF383C),
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: width * 0.05,
+                                  ),
+                                ),
+                              ],
                             ),
-                          ),
-                          SizedBox(height: 10),
-                          Text(
-                            "-£${totalExpenses.toStringAsFixed(2)}",
-                            style: TextStyle(
-                              color: Color(0xffFF383C),
-                              fontWeight: FontWeight.bold,
-                              fontSize: width * 0.06,
+
+                            // Divider
+                            SizedBox(
+                              height: 60,
+                              child: VerticalDivider(
+                                color: Colors.white,
+                                thickness: 1,
+                              ),
                             ),
-                          ),
-                        ],
+
+                            // --- income ---
+                            Column(
+                              children: [
+                                Text(
+                                  "Total income:",
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: width * 0.04,
+                                  ),
+                                ),
+                                SizedBox(height: 10),
+                                Text(
+                                  "+£${totalIncome.toStringAsFixed(2)}",
+                                  style: TextStyle(
+                                    color: Color.fromARGB(255, 39, 135, 66),
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: width * 0.05,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
                     ),
 

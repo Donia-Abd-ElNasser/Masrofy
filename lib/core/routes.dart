@@ -15,7 +15,7 @@ import 'package:masrofy/screens/transaction/view/transaction_view.dart';
 import 'package:masrofy/screens/onboarding/view/onboarding_screen.dart';
 import 'package:masrofy/screens/onboarding/view/splash_screen.dart';
 import 'package:masrofy/screens/onboarding/view/welcome_screen.dart';
-import 'package:masrofy/screens/wallet/view/wallet_view.dart';
+import 'package:masrofy/garbish/wallet/view/wallet_view.dart';
 
 abstract class AppRoutes {
   static const kSplashView = '/';

@@ -121,75 +121,83 @@ class _TransactionViewState extends State<TransactionView> {
                   SizedBox(height: 15),
 
                   // ---------------- HEADER BOX ----------------
-                  Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(15),
-                      image: const DecorationImage(
-                        image: AssetImage('assets/images/Frame 14368.png'),
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                    height: 73,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        GestureDetector(
-                          onTap:
-                              () => setState(() => transactionType = "income"),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              CircleAvatar(
-                                radius: 13,
-                                backgroundColor: const Color(0xff53D258),
-                                child: Icon(FontAwesomeIcons.plus, size: 15),
-                              ),
-                              SizedBox(height: 5),
-                              Text(
-                                'Add an Expense',
-                                style: TextStyle(
-                                  fontSize: 12,
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.w600,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
+         Container(
+  decoration: BoxDecoration(
+    borderRadius: BorderRadius.circular(15),
+    image: const DecorationImage(
+      image: AssetImage('assets/images/Frame 14368.png'),
+      fit: BoxFit.cover,
+    ),
+  ),
+  height: 73,
+  child: Row(
+    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+    children: [
 
-                        const VerticalDivider(
-                          color: Colors.white,
-                          thickness: 1,
-                          endIndent: 20,
-                          indent: 20,
-                        ),
+      // ------------------ INCOME BUTTON ------------------
+      GestureDetector(
+        onTap: () => setState(() => transactionType = "income"),
+        child: Opacity(
+          opacity: transactionType == "income" ? 1 : 0.4,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              CircleAvatar(
+                radius: 13,
+                backgroundColor: const Color(0xff53D258),
+                child: Icon(FontAwesomeIcons.plus, size: 15),
+              ),
+              SizedBox(height: 5),
+              Text(
+                'Add an Expense',
+                style: TextStyle(
+                  fontSize: 12,
+                  color: Colors.white,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
 
-                        GestureDetector(
-                          onTap:
-                              () => setState(() => transactionType = "expense"),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              CircleAvatar(
-                                radius: 13,
-                                backgroundColor: const Color(0xffE34747),
-                                child: Icon(FontAwesomeIcons.minus, size: 15),
-                              ),
-                              SizedBox(height: 5),
-                              Text(
-                                'Withdraw money',
-                                style: TextStyle(
-                                  fontSize: 12,
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.w600,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
+      const VerticalDivider(
+        color: Colors.white,
+        thickness: 1,
+        endIndent: 20,
+        indent: 20,
+      ),
+
+      // ------------------ EXPENSE BUTTON ------------------
+      GestureDetector(
+        onTap: () => setState(() => transactionType = "expense"),
+        child: Opacity(
+          opacity: transactionType == "expense" ? 1 : 0.4,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              CircleAvatar(
+                radius: 13,
+                backgroundColor: const Color(0xffE34747),
+                child: Icon(FontAwesomeIcons.minus, size: 15),
+              ),
+              SizedBox(height: 5),
+              Text(
+                'Withdraw money',
+                style: TextStyle(
+                  fontSize: 12,
+                  color: Colors.white,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    ],
+  ),
+)
+,
 
                   SizedBox(height: height * 0.03),
 
@@ -314,6 +322,14 @@ class _TransactionViewState extends State<TransactionView> {
                       DropdownMenuItem(
                         value: "Installments",
                         child: Text("Installments"),
+                      ),
+                       DropdownMenuItem(
+                        value: "Monthly income",
+                        child: Text("Monthly income"),
+                      ),
+                       DropdownMenuItem(
+                        value: "Extra Work",
+                        child: Text("Extra Work"),
                       ),
                       DropdownMenuItem(
                         value: "Restaurant lunch",
@@ -453,7 +469,7 @@ class _TransactionViewState extends State<TransactionView> {
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(12),
                             ),
-                            backgroundColor: Color.fromARGB(255, 0, 130, 134),
+                            backgroundColor:transactionType=='income'? Color(0xff0F3A1B):Color(0xff5A1012),
                             padding: EdgeInsets.symmetric(vertical: 15),
                           ),
                           child: Row(

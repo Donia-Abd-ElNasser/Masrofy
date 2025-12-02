@@ -3,7 +3,6 @@ import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:masrofy/screens/transaction/model.dart';
-
 import 'package:masrofy/screens/transaction/view_model/states.dart';
 
 class TransactionCubit extends Cubit<TransactionState> {
@@ -12,9 +11,9 @@ class TransactionCubit extends Cubit<TransactionState> {
   StreamSubscription? _connectivitySubscription;
 
   TransactionCubit({FirebaseFirestore? firestore, Connectivity? connectivity})
-    : _firestore = firestore ?? FirebaseFirestore.instance,
-      _connectivity = connectivity ?? Connectivity(),
-      super(TransactionInitial()) {
+      : _firestore = firestore ?? FirebaseFirestore.instance,
+        _connectivity = connectivity ?? Connectivity(),
+        super(TransactionInitial()) {
     _initConnectivityListener();
   }
 
@@ -68,10 +67,15 @@ class TransactionCubit extends Cubit<TransactionState> {
         repetition: repetition,
         date: date,
       );
+      
+      // 🎯 MODIFICATION: Convert the TransactionModel to a Map
+      // and ensure 'date' is saved as milliseconds since epoch (int).
+      final Map<String, dynamic> dataToSave = transaction.toMap();
+      dataToSave['date'] = date.millisecondsSinceEpoch; // Ensures sortable integer
 
       final docRef = await _firestore
           .collection('transactions')
-          .add(transaction.toMap());
+          .add(dataToSave); // Use the modified map
 
       final transactionWithId = transaction.copyWith(id: docRef.id);
 
@@ -88,12 +92,11 @@ class TransactionCubit extends Cubit<TransactionState> {
   }
 
   // Get transactions for specific user
-
   Stream<List<TransactionModel>> getTransactions(String userId) {
     return _firestore
         .collection('transactions')
         .where('userId', isEqualTo: userId) // Filter by user ID
-        .orderBy('date', descending: true)
+        .orderBy('date', descending: true) // Correctly sorts from LATEST to OLDEST
         .snapshots()
         .handleError((error) {
           print('Firestore stream error: $error');
@@ -101,6 +104,8 @@ class TransactionCubit extends Cubit<TransactionState> {
         .map(
           (snapshot) =>
               snapshot.docs
+                  // 💡 NOTE: The TransactionModel.fromMap must now read 'date' as an int 
+                  // (milliseconds since epoch) and convert it back to a DateTime.
                   .map((doc) => TransactionModel.fromMap(doc.id, doc.data()))
                   .toList(),
         );
