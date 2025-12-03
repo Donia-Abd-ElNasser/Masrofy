@@ -19,7 +19,7 @@ class WelcomeView extends StatelessWidget {
       body: BlocConsumer<AuthCubit, AuthState>(
         listener: (context, state) {
           if (state is AuthSuccess) {
-            GoRouter.of(context).push(AppRoutes.kHomeView);
+            GoRouter.of(context).pushReplacement(AppRoutes.kHomeView);
           } else if (state is AuthFailure) {
             ScaffoldMessenger.of(
               context,

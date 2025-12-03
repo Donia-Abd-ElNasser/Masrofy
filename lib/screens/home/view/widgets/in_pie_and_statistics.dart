@@ -90,7 +90,7 @@ class IncomePieAndStatistics extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const Text(
-            "Incomes Categories",
+            "Income Categories",
             style: TextStyle(
               fontSize: 18,
               fontWeight: FontWeight.bold,

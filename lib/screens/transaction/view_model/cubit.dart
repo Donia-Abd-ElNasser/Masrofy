@@ -37,6 +37,21 @@ class TransactionCubit extends Cubit<TransactionState> {
       return false;
     }
   }
+  Future<void> deleteTransaction(String transactionId) async {
+  try {
+    emit(TransactionLoading());
+
+    await _firestore
+        .collection('transactions')
+        .doc(transactionId)
+        .delete();
+
+    emit(TransactionSuccess("Transaction deleted successfully"));
+  } catch (e) {
+    emit(TransactionError("Failed to delete transaction: $e"));
+  }
+}
+
 
   // Create transaction with user authentication
   Future<void> createTransaction({
@@ -68,8 +83,7 @@ class TransactionCubit extends Cubit<TransactionState> {
         date: date,
       );
       
-      // 🎯 MODIFICATION: Convert the TransactionModel to a Map
-      // and ensure 'date' is saved as milliseconds since epoch (int).
+      
       final Map<String, dynamic> dataToSave = transaction.toMap();
       dataToSave['date'] = date.millisecondsSinceEpoch; // Ensures sortable integer
 
@@ -104,8 +118,7 @@ class TransactionCubit extends Cubit<TransactionState> {
         .map(
           (snapshot) =>
               snapshot.docs
-                  // 💡 NOTE: The TransactionModel.fromMap must now read 'date' as an int 
-                  // (milliseconds since epoch) and convert it back to a DateTime.
+               
                   .map((doc) => TransactionModel.fromMap(doc.id, doc.data()))
                   .toList(),
         );

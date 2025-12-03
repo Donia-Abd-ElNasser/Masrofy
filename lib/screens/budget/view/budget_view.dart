@@ -117,7 +117,7 @@ class BudgetView extends StatelessWidget {
                       Builder(
                         builder: (context) {
                           final data = doc.data() as Map<String, dynamic>;
-
+final id =doc.id;
                           final String title = data["category"];
                           final String place = data["description"];
                           final double amount = data["amount"];
@@ -137,6 +137,7 @@ class BudgetView extends StatelessWidget {
                                 'assets/images/roentgen_fuel-station.png';
                           }
                           return BudgetWidget(
+                            id:id,
                             type: type,
                             height: height,
                             width: width,

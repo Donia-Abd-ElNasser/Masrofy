@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
 import 'package:masrofy/core/constants.dart';
+import 'package:masrofy/screens/transaction/view_model/cubit.dart';
 
 class BudgetWidget extends StatelessWidget {
   const BudgetWidget({
@@ -11,12 +14,12 @@ class BudgetWidget extends StatelessWidget {
     required this.amount,
     required this.title,
     required this.place,
-    required this.icon, required this.type,
+    required this.icon, required this.type, required this.id,
   }) : super(key: key);
 
   final double width;
   final double height;
-  final String date, amount, title, place,type;
+  final String date, amount, title, place,type,id;
   final String icon;
 
 
@@ -100,7 +103,8 @@ class BudgetWidget extends StatelessWidget {
                           Expanded(
                             child: ElevatedButton.icon(
                               onPressed: () {
-                                Navigator.pop(context);
+                               context.read<TransactionCubit>().deleteTransaction(id);
+                               GoRouter.of(context).pop();
                                 
                               },
                               icon:

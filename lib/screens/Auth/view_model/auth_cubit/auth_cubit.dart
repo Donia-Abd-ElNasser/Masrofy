@@ -125,7 +125,7 @@ class AuthCubit extends Cubit<AuthState> {
     } on FirebaseAuthException catch (e) {
       emit(AuthFailure(errmessage: e.message ?? 'Firebase Auth Error'));
     } catch (e) {
-      emit(AuthFailure(errmessage: e.toString()));
+      emit(AuthFailure(errmessage: 'Sign in with Google was cancelled'));
     }
     return null;
   }

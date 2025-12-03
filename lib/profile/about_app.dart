@@ -1,29 +1,25 @@
 // lib/screens/about_app/view/about_app_screen.dart
 import 'package:flutter/material.dart';
+
 import 'package:masrofy/core/constants.dart';
+
+import 'package:masrofy/profile/custom_profile_back_buton.dart';
 
 class AboutAppScreen extends StatelessWidget {
   const AboutAppScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+
+    final width = MediaQuery.of(context).size.width;
     return Scaffold(
       backgroundColor: kPrimaryColor,
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         backgroundColor: kPrimaryColor,
         elevation: 0,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.black),
-          onPressed: () => Navigator.pop(context),
-        ),
-        title: const Text(
-          'About Masrofy',
-          style: TextStyle(
-            color: Colors.black,
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
+      
+        title: CustomProfileBackButon(width: width, text: 'About Masrofy')
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(20),
