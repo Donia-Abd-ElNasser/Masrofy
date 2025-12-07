@@ -1,7 +1,7 @@
 // lib/screens/assistance/view/assistance_screen.dart
 import 'package:flutter/material.dart';
 import 'package:masrofy/core/constants.dart';
-import 'package:masrofy/profile/custom_profile_back_buton.dart';
+import 'package:masrofy/screens/profile/custom_profile_back_buton.dart';
 
 class AssistanceScreen extends StatelessWidget {
   const AssistanceScreen({super.key});
@@ -94,7 +94,11 @@ class AssistanceScreen extends StatelessWidget {
                       _buildQuickAction(
                         icon: Icons.savings,
                         title: 'Budget Tips',
-                        onTap: () {},
+                        onTap: () {
+
+
+
+                        },
                       ),
                       const SizedBox(width: 10),
                       _buildQuickAction(

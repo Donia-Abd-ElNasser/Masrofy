@@ -1,9 +1,10 @@
 // lib/screens/rate_app/view/rate_app_screen.dart
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
 import 'package:masrofy/core/constants.dart';
 
-import 'package:masrofy/profile/custom_profile_back_buton.dart';
+import 'package:masrofy/screens/profile/custom_profile_back_buton.dart';
 
 class RateAppScreen extends StatelessWidget {
   const RateAppScreen({super.key});
@@ -314,8 +315,8 @@ class RateAppScreen extends StatelessWidget {
             actions: [
               TextButton(
                 onPressed: () {
-                  Navigator.pop(context); // Close dialog
-                  Navigator.pop(context); // Close rate screen
+          
+       Navigator.pop(context);
                 },
                 child: const Text(
                   'Close',

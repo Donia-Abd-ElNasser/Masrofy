@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:masrofy/profile/profile_view.dart';
+import 'package:masrofy/screens/profile/profile_view.dart';
 import 'package:masrofy/garbish/required_info.dart';
 
 import 'package:masrofy/screens/Auth/views/phone_view.dart';
@@ -15,7 +15,7 @@ import 'package:masrofy/screens/transaction/view/transaction_view.dart';
 import 'package:masrofy/screens/onboarding/view/onboarding_screen.dart';
 import 'package:masrofy/screens/onboarding/view/splash_screen.dart';
 import 'package:masrofy/screens/onboarding/view/welcome_screen.dart';
-import 'package:masrofy/garbish/wallet/view/wallet_view.dart';
+import 'package:masrofy/garbish/wallet_view.dart';
 
 abstract class AppRoutes {
   static const kSplashView = '/';

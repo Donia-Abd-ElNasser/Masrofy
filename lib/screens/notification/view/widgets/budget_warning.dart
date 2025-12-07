@@ -19,6 +19,7 @@ final String time;
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    // image
                     Container(
                       width: 40,
                       height: 40,

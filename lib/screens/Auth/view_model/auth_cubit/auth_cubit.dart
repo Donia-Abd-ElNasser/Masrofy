@@ -101,7 +101,7 @@ class AuthCubit extends Cubit<AuthState> {
     emit(AuthLoading());
     try {
       await googleSignIn.initialize();
-
+// registered accounts
       final GoogleSignInAccount? googleUser = await googleSignIn.authenticate();
 
       if (googleUser == null) return null;

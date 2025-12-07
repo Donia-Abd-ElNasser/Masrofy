@@ -1,4 +1,4 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
+
 import 'package:flutter/material.dart';
 
 import 'package:masrofy/core/utills/back_button.dart';
@@ -15,9 +15,7 @@ class CustomAppBar extends StatelessWidget {
         children: [
           SizedBox(height: 15),
           Row(
-            // crossAxisAlignment: CrossAxisAlignment.center,
-            // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            //  spacing: 20,
+       
             children: [
               Backbutton(width: width),
               SizedBox(width: 10),

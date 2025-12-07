@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
 import 'package:masrofy/core/constants.dart';
+import 'package:masrofy/core/routes.dart';
 import 'package:masrofy/core/utills/custom_app_bar.dart';
 import 'package:masrofy/screens/Auth/view_model/auth_cubit/auth_cubit.dart';
 import 'package:masrofy/screens/Auth/view_model/auth_cubit/auth_state.dart';
@@ -496,7 +498,7 @@ class _TransactionViewState extends State<TransactionView> {
                       SizedBox(width: 10),
                       Expanded(
                         child: ElevatedButton(
-                          onPressed: () => Navigator.pop(context),
+                          onPressed: () =>(context).go(AppRoutes.kHomeView),
                           style: ElevatedButton.styleFrom(
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(12),

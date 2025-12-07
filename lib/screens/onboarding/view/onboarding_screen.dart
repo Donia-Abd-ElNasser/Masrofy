@@ -18,7 +18,7 @@ class _OnboardingViewState extends State<OnboardingView> {
   final List<OnboardingData> _pages = [
     OnboardingData(
       image: 'assets/images/onboarding_one.png',
-      title: 'Your Finances\nSimplified by AI',
+      title: 'Take Control\nOf Your Money ',
       subtitle: 'Track, Save & Grow Smarter',
     ),
     OnboardingData(
@@ -191,7 +191,7 @@ class _OnboardingViewState extends State<OnboardingView> {
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               fontSize: width * 0.04,
-                              color: Colors.grey[600],
+                              color: const Color.fromARGB(255, 90, 90, 90),
                               height: 1.5,
                             ),
                           ),

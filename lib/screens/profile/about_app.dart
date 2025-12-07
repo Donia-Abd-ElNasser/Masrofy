@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'package:masrofy/core/constants.dart';
 
-import 'package:masrofy/profile/custom_profile_back_buton.dart';
+import 'package:masrofy/screens/profile/custom_profile_back_buton.dart';
 
 class AboutAppScreen extends StatelessWidget {
   const AboutAppScreen({super.key});

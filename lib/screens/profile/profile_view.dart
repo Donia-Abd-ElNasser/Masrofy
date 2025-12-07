@@ -7,9 +7,9 @@ import 'package:masrofy/core/routes.dart';
 import 'package:masrofy/core/utills/custom_app_bar.dart';
 import 'package:masrofy/screens/Auth/view_model/auth_cubit/auth_cubit.dart';
 import 'package:masrofy/screens/Auth/view_model/auth_cubit/auth_state.dart';
-import 'package:masrofy/profile/about_app.dart';
-import 'package:masrofy/profile/assistance.dart';
-import 'package:masrofy/profile/rate_app.dart';
+import 'package:masrofy/screens/profile/about_app.dart';
+import 'package:masrofy/screens/profile/assistance.dart';
+import 'package:masrofy/screens/profile/rate_app.dart';
 
 class ProfileView extends StatelessWidget {
   const ProfileView({super.key});
@@ -212,7 +212,7 @@ class ProfileView extends StatelessWidget {
             fontSize: 14,
           ),
         ),
-        trailing: Icon(Icons.arrow_forward_ios, size: 14, color: color),
+        trailing: Icon(Icons.arrow_forward_ios, size: 14, color: Colors.white),
         onTap: onTap,
       ),
     );
